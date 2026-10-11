@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julián Pérez // Frontier Tech Senior Dev & Cyber-Páramo</title>
+  <meta name="description" content="Web oficial de Julián Pérez: Senior Developer de El Espino, Boyacá. Tecnología de frontera, estilo cibernético y siempre con lo último en guarachas.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%2232%22%20height=%2232%22><text y=%2226%22 font-size=%2226%22>⚡</text></svg>">
+</head>
+<body class="crt-enabled">
+
+  <!-- Background Canvas for Cyber-Páramo Particle & Grid Matrix -->
+  <canvas id="cyberCanvas"></canvas>
+  
+  <!-- CRT Scanline & Vignette Overlay -->
+  <div class="crt-overlay"></div>
+
+  <!-- Audio Visualizer Bar at the top -->
+  <div class="sound-visualizer-container" id="visualizerContainer">
+    <div class="visualizer-label">
+      <span class="pulse-dot"></span>
+      <span id="audioStatusText">GUARACHA-CORE: EN ESPERA</span>
+    </div>
+    <div class="bars" id="eqBars">
+      <!-- 24 dynamic EQ bars -->
+    </div>
+    <button class="mini-sound-toggle" id="miniSoundToggle" title="Activar/Silenciar Guaracha Engine">
+      <span class="icon">🔊</span> <span class="toggle-text">SONAR</span>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <header class="cyber-header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-icon">▲</span>
+        <span class="logo-text">JULIÁN<span class="accent-text">.DEV</span></span>
+        <span class="badge-loc">EL ESPINO [BYC]</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about" class="nav-link"><span class="nav-num">01.</span> EL MAN</a>
+        <a href="#stack" class="nav-link"><span class="nav-num">02.</span> ARSENAL</a>
+        <a href="#projects" class="nav-link"><span class="nav-num">03.</span> FRONTERA</a>
+        <a href="#guaracha-lab" class="nav-link"><span class="nav-num">04.</span> GUARACHA-LAB</a>
+        <a href="#terminal" class="nav-link"><span class="nav-num">05.</span> TERMINAL</a>
+        <a href="#contact" class="nav-link btn-cyber-nav">CONTACTO_</a>
+      </nav>
+
+      <div class="nav-controls">
+        <button id="crtToggleBtn" class="pill-btn" title="Alternar efecto retro CRT">CRT: ON</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-container">
+        
+        <div class="hero-content">
+          <div class="hero-top-badges">
+            <span class="cyber-pill green-glow">
+              <span class="blink-dot"></span> 3.100m SNM // 0ms LATENCIA
+            </span>
+            <span class="cyber-pill cyan-glow">
+              BOYACÁ TECH CLUSTER v4.2
+            </span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="title-sub">SENIOR FRONTIER DEV // ARCHITECT</span>
+            <span class="glitch-text" data-text="JULIÁN PÉREZ">JULIÁN PÉREZ</span>
+          </h1>
+
+          <div class="lema-box">
+            <div class="lema-header">
+              <span class="lema-tag">LEMA OFICIAL // TRANSMISIÓN CUÁNTICA</span>
+              <span class="lema-bpm">132 BPM</span>
+            </div>
+            <p class="lema-text">
+              "Yo siempre vengo con <span class="highlight-guaracha">lo último en guarachas</span>."
+            </p>
+            <div class="lema-subtext">
+              ⚡ Código de frontera, arquitecturas neuronales y sabor criollo directo desde El Espino para el universo.
+            </div>
+          </div>
+
+          <p class="hero-description">
+            Ingeniero de Software Senior transformando la civilización digital con 
+            <strong>Inteligencia Artificial de Frontera</strong>, computación cuántica, arquitecturas de ultra-baja latencia y 
+            un sentido del humor inmune a las fallas en producción.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn-cyber-primary pulse-btn" id="heroPlayGuarachaBtn">
+              <span class="btn-icon">⚡</span>
+              <span class="btn-text">SOLTAR EL DROP DE FRONTERA</span>
+              <span class="btn-flare"></span>
+            </button>
+            <a href="#projects" class="btn-cyber-secondary">
+              <span class="btn-icon">🛸</span>
+              <span class="btn-text">EXPLORAR PROYECTOS</span>
+            </a>
+            <a href="#terminal" class="btn-cyber-outline">
+              <span class="btn-icon">⌨️</span>
+              <span class="btn-text">TERMINAL</span>
+            </a>
+          </div>
+
+          <div class="hero-telemetry">
+            <div class="telemetry-item">
+              <span class="t-label">ORIGEN:</span>
+              <span class="t-val">El Espino, Boyacá 🏔️</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="t-label">NIVEL:</span>
+              <span class="t-val">Senior Frontier Engineer 🧠</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="t-label">OVERCLOCK:</span>
+              <span class="t-val">Changua a 120 FPS 🍲</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="t-label">RELIABILITY:</span>
+              <span class="t-val">99.999% Puro Páramo ⚡</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="cyber-avatar-frame">
+            <div class="avatar-scanner"></div>
+            <div class="avatar-hud-tl">SYS.ID // 08-ESP-BOY</div>
+            <div class="avatar-hud-tr">PÁRAMO-CORE: OK</div>
+            <div class="avatar-hud-bl">NEURAL-LINK: SYNC</div>
+            <div class="avatar-hud-br">RUANA: ACTIVADA</div>
+
+            <!-- Cybernetic SVG Illustration of Julian: Ruana Neón + Cyber Goggles + Andean Paramo Background -->
+            <div class="avatar-svg-container">
+              <svg viewBox="0 0 400 480" class="cyber-avatar-svg" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="cyberSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#050813"/>
+                    <stop offset="70%" stop-color="#0b132b"/>
+                    <stop offset="100%" stop-color="#1c0b2b"/>
+                  </linearGradient>
+                  <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00f0ff"/>
+                    <stop offset="100%" stop-color="#0080ff"/>
+                  </linearGradient>
+                  <linearGradient id="neonPink" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff007f"/>
+                    <stop offset="100%" stop-color="#ff00ff"/>
+                  </linearGradient>
+                  <linearGradient id="ruanaCyber" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#181e36"/>
+                    <stop offset="50%" stop-color="#24143a"/>
+                    <stop offset="100%" stop-color="#111827"/>
+                  </linearGradient>
+                  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Background Paramo Mountains & Digital Wireframes -->
+                <rect width="400" height="480" fill="url(#cyberSky)" rx="16"/>
+                <polygon points="0,480 80,310 180,360 270,290 400,420 400,480" fill="#0f172a" opacity="0.8"/>
+                <polygon points="40,480 150,260 240,320 330,240 400,340 400,480" fill="#1e1035" opacity="0.6"/>
+                <!-- Frailejones Cibernéticos en el horizonte -->
+                <path d="M 60,330 Q 60,290 63,270 M 55,285 Q 63,275 72,285 M 50,300 Q 63,288 75,300" stroke="#00f0ff" stroke-width="2" fill="none" opacity="0.7"/>
+                <path d="M 340,310 Q 340,270 343,250 M 335,265 Q 343,255 352,265 M 330,280 Q 343,268 355,280" stroke="#00ff66" stroke-width="2" fill="none" opacity="0.7"/>
+
+                <!-- Cyber Sun / Holo Grid -->
+                <circle cx="200" cy="180" r="100" fill="none" stroke="url(#neonPink)" stroke-width="2" opacity="0.3" stroke-dasharray="8 6"/>
+                <circle cx="200" cy="180" r="75" fill="none" stroke="url(#neonCyan)" stroke-width="1.5" opacity="0.4"/>
+
+                <!-- Person Silhouette / Head & Cyber Ruana -->
+                <!-- Ruana Tron Style -->
+                <path d="M 80,480 L 140,260 L 200,290 L 260,260 L 320,480 Z" fill="url(#ruanaCyber)" stroke="#00f0ff" stroke-width="2" filter="url(#neonGlow)"/>
+                
+                <!-- Ruana Glowing Circuit Lines (Patrón Boyacense Cyber) -->
+                <path d="M 140,260 L 200,380 L 260,260" stroke="#ff007f" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/>
+                <path d="M 110,480 L 170,320 L 200,350 L 230,320 L 290,480" stroke="#00f0ff" stroke-width="1.5" fill="none" opacity="0.8"/>
+                <path d="M 200,350 L 200,480" stroke="#00ff66" stroke-width="2" stroke-dasharray="4 4"/>
+                
+                <!-- Ruana Central Emblem: "EL ESPINO 132BPM" -->
+                <polygon points="200,335 185,355 200,375 215,355" fill="#00f0ff" opacity="0.85"/>
+                <circle cx="200" cy="355" r="4" fill="#ffffff"/>
+
+                <!-- Neck and Chin -->
+                <path d="M 175,250 L 175,270 L 225,270 L 225,250 Z" fill="#b07d62"/>
+                <polygon points="175,240 225,240 200,270" fill="#c68b59"/>
+
+                <!-- Head & Hair -->
+                <ellipse cx="200" cy="200" rx="42" ry="48" fill="#d49b6a"/>
+                <!-- Hair (Cool modern cyber haircut) -->
+                <path d="M 155,195 Q 160,150 200,148 Q 240,150 245,195 Q 220,165 200,168 Q 175,165 155,195 Z" fill="#111827"/>
+                <path d="M 160,165 Q 180,140 220,145 Q 200,135 170,150 Z" fill="#00f0ff" opacity="0.9"/>
+
+                <!-- Cyber Visor / Smart Cyber Glasses -->
+                <polygon points="160,192 240,192 235,214 165,214" fill="#0a0f1d" stroke="#00f0ff" stroke-width="2" filter="url(#neonGlow)"/>
+                <line x1="165" y1="203" x2="235" y2="203" stroke="#ff007f" stroke-width="3"/>
+                <!-- Visor Digital HUD Data -->
+                <circle cx="180" cy="203" r="2" fill="#00ff66"/>
+                <circle cx="220" cy="203" r="2" fill="#00ff66"/>
+                
+                <!-- Confident Smirk / Smile -->
+                <path d="M 190,230 Q 200,238 212,229" stroke="#5a3825" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                <!-- Auriculares Cyber-DJ / Developer Headset -->
+                <path d="M 152,185 Q 152,145 200,143 Q 248,145 248,185" stroke="#00f0ff" stroke-width="4" fill="none"/>
+                <rect x="146" y="185" width="12" height="28" rx="6" fill="#1e293b" stroke="#ff007f" stroke-width="2"/>
+                <rect x="242" y="185" width="12" height="28" rx="6" fill="#1e293b" stroke="#ff007f" stroke-width="2"/>
+
+                <!-- Holographic Floating Guaracha Beat Rings -->
+                <circle cx="200" cy="200" r="140" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="12 16" opacity="0.4">
+                  <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="200" cy="200" r="160" fill="none" stroke="#ff007f" stroke-width="1" stroke-dasharray="4 20" opacity="0.3">
+                  <animateTransform attributeName="transform" type="rotate" from="360 200 200" to="0 200 200" dur="28s" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+            </div>
+
+            <!-- Interactive Ruana Status Box -->
+            <div class="avatar-floating-card">
+              <div class="card-icon">⚡</div>
+              <div class="card-details">
+                <span class="card-title">RUANA-TECH v9.0</span>
+                <span class="card-desc">Lana térmica + Acelerador Cuántico de 1024 Qubits</span>
+              </div>
+              <span class="status-live">ONLINE</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 01: EL MAN (LORE & STORY) -->
+    <section id="about" class="section-block">
+      <div class="section-container">
+        
+        <div class="section-tag">
+          <span class="tag-bracket">[</span>
+          <span class="tag-name">01. ORIGEN_Y_LORE</span>
+          <span class="tag-bracket">]</span>
+        </div>
+        
+        <h2 class="section-title">DE EL ESPINO, BOYACÁ <span class="neon-gradient">AL CÓDIGO DE FRONTERA</span></h2>
+        
+        <div class="about-grid">
+          <div class="about-text-column">
+            <p class="lead-quote">
+              "En El Espino hace frío de verdad, pero mi cluster de servidores corre a temperatura ambiente natural. 
+              No necesitamos aire acondicionado; necesitamos más changua y más ancho de banda."
+            </p>
+            
+            <p>
+              Me llamo <strong>Julián Pérez</strong>. Crecí entre las montañas imponentes del norte de Boyacá, 
+              donde aprendí que si vas a hacer algo, <strong>lo haces bien o no te levantas de la cama</strong>. 
+              Hoy en día soy <strong>Senior Software Engineer</strong> especializado en 
+              <span class="tech-highlight">tecnología de frontera</span>: arquitecturas distribuidas ultra-escalables, 
+              inteligencia artificial generativa profunda y sistemas de latencia cercana a cero.
+            </p>
+
+            <p>
+              ¿Mi secreto? No me conformo con el framework que estuvo de moda la semana pasada. 
+              <strong>Yo siempre vengo con lo último en guarachas</strong>: si sale una arquitectura cuántica, un nuevo kernel en Rust o un modelo multimodal revolucionario, 
+              ya lo tengo corriendo en un nodo experimental antes de que salga en Hacker News.
+            </p>
+
+            <div class="boyaca-superpowers">
+              <h3 class="sub-heading">SUPERPODERES ANDINO-CIBERNÉTICOS:</h3>
+              <div class="powers-list">
+                <div class="power-card">
+                  <span class="p-icon">🍲</span>
+                  <div>
+                    <strong>Changua-Driven Development (CDD):</strong>
+                    <p>Huevo tibio, cilantro fresco y optimización de memoria a nivel de punteros.</p>
+                  </div>
+                </div>
+                <div class="power-card">
+                  <span class="p-icon">🏔️</span>
+                  <div>
+                    <strong>Tolerancia Extrema a la Presión:</strong>
+                    <p>A 3.100 metros de altura la presión atmosférica es baja, pero la resistencia a bugs en prod es infinita.</p>
+                  </div>
+                </div>
+                <div class="power-card">
+                  <span class="p-icon">🎛️</span>
+                  <div>
+                    <strong>BPM Máximo en Resolución de Incidentes:</strong>
+                    <p>Si se cae la base de datos a las 2 AM, la revivo al compás de un drop de guaracha electrónica.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-stats-column">
+            <div class="cyber-stat-card">
+              <div class="stat-number neon-cyan">+8</div>
+              <div class="stat-title">AÑOS EN LA FRONTERA TECH</div>
+              <div class="stat-desc">Diseñando sistemas que procesan millones de transacciones sin despeinar una oveja.</div>
+            </div>
+
+            <div class="cyber-stat-card">
+              <div class="stat-number neon-pink">132</div>
+              <div class="stat-title">BPM CONSTANTES DE ENERGÍA</div>
+              <div class="stat-desc">Ritmo cardíaco programando en modo guaracha cuando la compilación da cero warnings.</div>
+            </div>
+
+            <div class="cyber-stat-card">
+              <div class="stat-number neon-green">100%</div>
+              <div class="stat-title">TALENTO DE EL ESPINO</div>
+              <div class="stat-desc">Exportando inteligencia andina de alta gama a nivel global y extraterrestre.</div>
+            </div>
+
+            <div class="humor-banner">
+              <span class="h-icon">💡</span>
+              <p><em>"Un senior junior te explica la teoría; un senior de El Espino te arregla el cluster mientras te cuenta un chiste boyacense."</em></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 02: ARSENAL / TECH STACK -->
+    <section id="stack" class="section-block bg-cyber-dark">
+      <div class="section-container">
+        
+        <div class="section-tag">
+          <span class="tag-bracket">[</span>
+          <span class="tag-name">02. ARSENAL_DE_FRONTERA</span>
+          <span class="tag-bracket">]</span>
+        </div>
+
+        <h2 class="section-title">LO ÚLTIMO EN <span class="neon-gradient">TECNOLOGÍA Y GUORACHAS</span></h2>
+        <p class="section-subtitle">
+          El set de herramientas con el que Julián construye el futuro. Si existe en la frontera computacional, está en este stack.
+        </p>
+
+        <div class="stack-grid">
+          
+          <!-- Category 1 -->
+          <div class="stack-category-card">
+            <div class="cat-header">
+              <span class="cat-icon">🧠</span>
+              <div class="cat-info">
+                <h3>FRONTIER AI & QUANTUM</h3>
+                <span class="cat-badge">NIVEL: OVER 9000</span>
+              </div>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">LLMs Multimodales & Agentes Autónomos</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 98%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Deep Reinforcement Learning & PyTorch</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 94%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Modelos de Inferencia Local (Ollama, vLLM, TensorRT)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 96%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Algoritmos Cuánticos (Qiskit & Simulación)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 88%"></span></span>
+              </li>
+            </ul>
+            <div class="cat-humor">
+              "Entreno modelos más rápido de lo que un boyaco sube el cerro en bicicleta."
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="stack-category-card">
+            <div class="cat-header">
+              <span class="cat-icon">⚡</span>
+              <div class="cat-info">
+                <h3>BAJA LATENCIA & HARDWARE</h3>
+                <span class="cat-badge">0.001 MS</span>
+              </div>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">Rust (Zero-Cost Abstractions & Concurrencia)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 97%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Go (Microservicios de Alta Concurrencia)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 95%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">C++ Moderno / WebAssembly (Wasm)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 91%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Linux Kernel Tuning & eBPF Observability</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 90%"></span></span>
+              </li>
+            </ul>
+            <div class="cat-humor">
+              "Memory leaks? En mi código la memoria se gestiona con la disciplina de una abuela boyacense."
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="stack-category-card">
+            <div class="cat-header">
+              <span class="cat-icon">🌐</span>
+              <div class="cat-info">
+                <h3>CLOUD & DISTRIBUTED SYSTEMS</h3>
+                <span class="cat-badge">99.999% SLA</span>
+              </div>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">Kubernetes (K8s) & Mesh Multi-Region</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 96%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Distributed Databases (CockroachDB, ClickHouse)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 93%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Arquitecturas Event-Driven (Kafka, Redpanda)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 95%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Edge Computing & Cloudflare Workers</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 92%"></span></span>
+              </li>
+            </ul>
+            <div class="cat-humor">
+              "Si AWS se cae en Virginia, mis nodos en el Nevado del Cocuy siguen respondiendo."
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="stack-category-card special-guaracha-card">
+            <div class="cat-header">
+              <span class="cat-icon">🎛️</span>
+              <div class="cat-info">
+                <h3>GUARACHA ENGINE 4.0</h3>
+                <span class="cat-badge">132 BPM SOUND DSP</span>
+              </div>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">Web Audio API & Síntesis Modular Analógica</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 100%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Generación Procedural de Sintetizadores Tribales</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 99%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Compresión Dinámica anti-Bugs</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 97%"></span></span>
+              </li>
+              <li>
+                <span class="skill-name">Frecuencias Sub-Bass del Páramo (40 Hz)</span>
+                <span class="skill-bar"><span class="bar-fill" style="width: 98%"></span></span>
+              </li>
+            </ul>
+            <div class="cat-humor">
+              "El compilador no sabe si está ejecutando lógica binaria o soltando un zapateo cibernético."
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 03: PROYECTOS DE FRONTERA -->
+    <section id="projects" class="section-block">
+      <div class="section-container">
+        
+        <div class="section-tag">
+          <span class="tag-bracket">[</span>
+          <span class="tag-name">03. PROYECTOS_DE_FRONTERA</span>
+          <span class="tag-bracket">]</span>
+        </div>
+
+        <h2 class="section-title">CREACIONES QUE IMPACTAN <span class="neon-gradient">EL MUNDO REAL</span></h2>
+        <p class="section-subtitle">
+          Proyectos reales de frontera técnica con el inconfundible sello del muchacho de El Espino.
+        </p>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-num">PROJ_01</span>
+              <span class="project-status live">STATUS: DEPLOYED</span>
+            </div>
+            <h3 class="project-title">RuanaOS Quantum Core</h3>
+            <p class="project-desc">
+              Sistema operativo híbrido de tiempo real para dispositivos IoT portátiles en climas extremos. 
+              Monitorea variables biométricas, regula calor corporal con nanomateriales y ejecuta algoritmos 
+              criptográficos cuánticos resistentes a ciberataques mientras pasteas el ganado.
+            </p>
+            <div class="project-tech-tags">
+              <span>Rust</span>
+              <span>Quantum Ciphers</span>
+              <span>RTOS</span>
+              <span>IoT Boyacense</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-metric">⚡ Latencia: 0.12ms</div>
+              <div class="project-humor">"Aprobado por el sindicato de ovejas de El Espino"</div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-num">PROJ_02</span>
+              <span class="project-status live">STATUS: LIVE</span>
+            </div>
+            <h3 class="project-title">ChanguaGPT Ultra-Reasoning</h3>
+            <p class="project-desc">
+              Modelo de razonamiento paso a paso de 70 mil millones de parámetros afinado para resolver 
+              arquitecturas de software hipercomplejas. Si tu microservicio entra en deadlock, 
+              ChanguaGPT te da la traza exacta de memoria y te aconseja tomarte un café con pan de bono para calmar los nervios.
+            </p>
+            <div class="project-tech-tags">
+              <span>PyTorch</span>
+              <span>Transformer LLM</span>
+              <span>vLLM</span>
+              <span>Reinforcement Learning</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-metric">🧠 99.4% Precisión en Código</div>
+              <div class="project-humor">"Resuelve memory leaks con sabiduría andina"</div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-num">PROJ_03</span>
+              <span class="project-status dev">STATUS: EXPERIMENTAL</span>
+            </div>
+            <h3 class="project-title">El Espino Orbital Mesh</h3>
+            <p class="project-desc">
+              Red satelital P2P descentralizada para comunicación de ultra-baja latencia sobre la cordillera oriental. 
+              Enlaza centros de investigación globales directamente con los valles de Boyacá mediante enrutamiento 
+              óptico cuántico y protocolos sin servidor central.
+            </p>
+            <div class="project-tech-tags">
+              <span>Go</span>
+              <span>Libp2p</span>
+              <span>Satellite DSP</span>
+              <span>Zero-Knowledge Proofs</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-metric">🛰️ 10 Gbps en el Páramo</div>
+              <div class="project-humor">"Ni la neblina más brava tumba este ping"</div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-num">PROJ_04</span>
+              <span class="project-status live">STATUS: VIRAL</span>
+            </div>
+            <h3 class="project-title">Neural Guaracha Synthesizer</h3>
+            <p class="project-desc">
+              Motor algorítmico de síntesis sonora en tiempo real desarrollado para el navegador. 
+              Genera secuencias rítmicas de guaracha electrónica a 132 BPM mediante síntesis por modulación de frecuencia (FM) 
+              y redes convolucionales para DJs de código abierto.
+            </p>
+            <div class="project-tech-tags">
+              <span>Web Audio API</span>
+              <span>DSP</span>
+              <span>JavaScript ESNext</span>
+              <span>Cyber-Tribal</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-metric">🎛️ 132 BPM Puros</div>
+              <div class="project-humor">"Lo último en guarachas... ¡literalmente!"</div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 04: GUARACHA-LAB (INTERACTIVE SOUND ENGINE) -->
+    <section id="guaracha-lab" class="section-block bg-cyber-dark">
+      <div class="section-container">
+        
+        <div class="section-tag">
+          <span class="tag-bracket">[</span>
+          <span class="tag-name">04. GUARACHA_LAB_CIBERNÉTICO</span>
+          <span class="tag-bracket">]</span>
+        </div>
+
+        <h2 class="section-title">EL LABORATORIO <span class="neon-gradient">132 BPM</span></h2>
+        <p class="section-subtitle">
+          Porque un senior dev de verdad no solo escribe código; ¡hace vibrar los parlantes con tecnología de síntesis en tiempo real! 
+          Interactúa con los controles y activa la experiencia sonora de Julián.
+        </p>
+
+        <div class="guaracha-console">
+          
+          <div class="console-screen">
+            <div class="screen-header">
+              <span>SISTEMA DE SÍNTESIS: GUARACHA-DSP v3.4</span>
+              <span class="mode-tag" id="dspModeTag">ESTADO: LISTO</span>
+            </div>
+
+            <!-- Oscilloscope / Visualizer Canvas -->
+            <canvas id="oscCanvas" class="osc-display"></canvas>
+
+            <div class="screen-readout">
+              <div class="readout-col">
+                <span class="lbl">BPM ACTUAL:</span>
+                <span class="val neon-cyan" id="bpmDisplay">132.0</span>
+              </div>
+              <div class="readout-col">
+                <span class="lbl">FRECUENCIA BASE:</span>
+                <span class="val neon-pink">440 Hz (Tribal Lead)</span>
+              </div>
+              <div class="readout-col">
+                <span class="lbl">SUB-BASS:</span>
+                <span class="val neon-green">ACTIVO [45Hz]</span>
+              </div>
+              <div class="readout-col">
+                <span class="lbl">VIBRA:</span>
+                <span class="val neon-yellow">100% BOYACENSE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soundboard Pads -->
+          <div class="console-controls">
+            
+            <div class="main-loop-control">
+              <button id="masterLoopBtn" class="btn-master-drop">
+                <span class="drop-icon">🚀</span>
+                <span class="drop-title">ARRANCAR EL DROP CONTINUO</span>
+                <span class="drop-sub">Loop de Guaracha Cibernética a 132 BPM</span>
+              </button>
+            </div>
+
+            <div class="pads-grid">
+              <button class="sound-pad" data-sound="kick">
+                <span class="pad-key">PAD 1</span>
+                <span class="pad-label">💥 KICK GUARACHA</span>
+                <span class="pad-desc">Bajo contundente 45Hz</span>
+              </button>
+
+              <button class="sound-pad" data-sound="tribal">
+                <span class="pad-key">PAD 2</span>
+                <span class="pad-label">🥁 TOM TRIBAL</span>
+                <span class="pad-desc">Golpe característico</span>
+              </button>
+
+              <button class="sound-pad" data-sound="lead">
+                <span class="pad-key">PAD 3</span>
+                <span class="pad-label">⚡ SINTETIZADOR NEÓN</span>
+                <span class="pad-desc">Lead FM chirriante</span>
+              </button>
+
+              <button class="sound-pad" data-sound="riser">
+                <span class="pad-key">PAD 4</span>
+                <span class="pad-label">🚀 CYBER RISER</span>
+                <span class="pad-desc">Subida galáctica</span>
+              </button>
+
+              <button class="sound-pad" data-sound="zapateo">
+                <span class="pad-key">PAD 5</span>
+                <span class="pad-label">🕺 ZAPATEO PÁRAMO</span>
+                <span class="pad-desc">Percusión rápida</span>
+              </button>
+
+              <button class="sound-pad pad-shout" data-sound="shout">
+                <span class="pad-key">PAD 6</span>
+                <span class="pad-label">🗣️ "¡LO ÚLTIMO EN GUORACHAS!"</span>
+                <span class="pad-desc">Voz cuántica oficial</span>
+              </button>
+            </div>
+
+            <div class="console-sliders">
+              <div class="slider-group">
+                <label for="tempoSlider">TEMPO (BPM): <span id="tempoVal">132</span></label>
+                <input type="range" id="tempoSlider" min="120" max="145" value="132">
+              </div>
+              <div class="slider-group">
+                <label for="distortionSlider">DISTORSIÓN CIBERNÉTICA: <span id="distVal">50%</span></label>
+                <input type="range" id="distortionSlider" min="0" max="100" value="50">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 05: TERMINAL INTERACTIVA CIBER-BOYACO -->
+    <section id="terminal" class="section-block">
+      <div class="section-container">
+        
+        <div class="section-tag">
+          <span class="tag-bracket">[</span>
+          <span class="tag-name">05. TERMINAL_CIBER_BOYACENSE</span>
+          <span class="tag-bracket">]</span>
+        </div>
+
+        <h2 class="section-title">TERMINAL <span class="neon-gradient">ESP-SSH // NODE 01</span></h2>
+        <p class="section-subtitle">
+          Conéctate directamente al shell de Julián. Escribe comandos para interactuar o haz clic en las sugerencias.
+        </p>
+
+        <div class="cyber-terminal-window">
+          <div class="term-titlebar">
+            <div class="term-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="term-title">julian@el-espino-boyaca:~ [zsh - Frontier Mode]</div>
+            <div class="term-badge">TLS v1.3 // QUANTUM-READY</div>
+          </div>
+
+          <div class="term-body" id="termBody">
+            <div class="term-welcome">
+              <pre class="ascii-art">
+   ___ _   _ _     ___   _   _   _   ____  _____ ____  _____ _____ 
+  |_ _| | | | |   |_ _| / \ | \ | | |  _ \| ____|  _ \| ____|__  / 
+   | || | | | |    | | / _ \|  \| | | |_) |  _| | |_) |  _|   / /  
+   | || |_| | |___ | |/ ___ \ |\  | |  __/| |___|  _ <| |___ / /_  
+  |___|\___/|_____|___/_/   \_\_| \_| |_|   |_____|_| \_\_____/____| 
+              [ EL ESPINO - BOYACÁ // SENIOR FRONTIER DEV ]
+              "Yo siempre vengo con lo último en guarachas"
+              </pre>
+              <p class="term-info">
+                Bienvenido al sistema ciber-boyacense. Escribe <span class="cmd-highlight">help</span> para ver la lista de comandos disponibles, 
+                o prueba <span class="cmd-highlight">guaracha</span>, <span class="cmd-highlight">changua</span>, <span class="cmd-highlight">origen</span>, <span class="cmd-highlight">stack</span>.
+              </p>
+            </div>
+
+            <!-- Terminal Output History -->
+            <div id="termHistory"></div>
+
+            <!-- Interactive Command Line -->
+            <div class="term-input-line">
+              <span class="term-prompt">julian@espino:~$</span>
+              <input type="text" id="termInput" autocomplete="off" spellcheck="false" placeholder="Escribe un comando (ej: help)...">
+            </div>
+          </div>
+
+          <div class="term-quick-actions">
+            <span class="qa-label">Comandos rápidos:</span>
+            <button class="term-chip" data-cmd="help">help</button>
+            <button class="term-chip" data-cmd="guaracha">guaracha</button>
+            <button class="term-chip" data-cmd="origen">origen</button>
+            <button class="term-chip" data-cmd="changua">changua</button>
+            <button class="term-chip" data-cmd="proyectos">proyectos</button>
+            <button class="term-chip" data-cmd="filosofia">filosofia</button>
+            <button class="term-chip" data-cmd="contacto">contacto</button>
+            <button class="term-chip" data-cmd="clear">clear</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 06: MANIFIESTO CIBER-BOYACO -->
+    <section class="section-block bg-cyber-dark">
+      <div class="section-container">
+        <div class="section-tag">
+          <span class="tag-bracket">[</span>
+          <span class="tag-name">06. PRINCIPIOS_Y_MANIFIESTO</span>
+          <span class="tag-bracket">]</span>
+        </div>
+
+        <h2 class="section-title">MANIFIESTO DEL <span class="neon-gradient">DEV DE FRONTERA</span></h2>
+
+        <div class="manifesto-grid">
+          <div class="manifesto-card">
+            <span class="m-number">01</span>
+            <h3>Claridad de Páramo</h3>
+            <p>El código debe ser tan puro y nítido como el aire de El Espino a las 5:00 de la mañana. Si una función necesita 10 comentarios para entenderse, mejor refactorízala.</p>
+          </div>
+
+          <div class="manifesto-card">
+            <span class="m-number">02</span>
+            <h3>Siempre en la Frontera</h3>
+            <p>No esperes a que la tecnología se vuelva aburrida. Adelántate, experimenta con IA de vanguardia, kernels optimizados y computación cuántica. Si no estás innovando, estás esperando.</p>
+          </div>
+
+          <div class="manifesto-card">
+            <span class="m-number">03</span>
+            <h3>Actitud 132 BPM</h3>
+            <p>Los problemas técnicos complejos se resuelven con calma mental, rigor matemático y un buen beat de guaracha de fondo para que los dedos fluyan sobre el teclado mecánico.</p>
+          </div>
+
+          <div class="manifesto-card">
+            <span class="m-number">04</span>
+            <h3>Orgullo de Origen, Impacto Mundial</h3>
+            <p>No importa si estás en el municipio más alto de los Andes: desde una laptop con conexión a internet y determinación boyacense se puede cambiar la historia de la tecnología.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07: CONTACTO -->
+    <section id="contact" class="section-block">
+      <div class="section-container">
+        
+        <div class="section-tag">
+          <span class="tag-bracket">[</span>
+          <span class="tag-name">07. CONECTAR_CON_JULIÁN</span>
+          <span class="tag-bracket">]</span>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-header">
+            <h2 class="contact-title">¿LISTO PARA CONSTRUIR <span class="neon-gradient">EL FUTURO?</span></h2>
+            <p class="contact-sub">
+              ¿Tienes un desafío de tecnología de frontera, una arquitectura imposible que necesita un Senior Dev, 
+              o simplemente quieres hablar de modelos de IA y guarachas a 132 BPM?
+            </p>
+          </div>
+
+          <div class="contact-methods">
+            
+            <div class="contact-card">
+              <span class="c-icon">🛰️</span>
+              <span class="c-title">TRANSMISIÓN DIRECTA</span>
+              <span class="c-val">julian.perez@frontier.dev</span>
+              <button class="btn-copy-chip" data-copy="julian.perez@frontier.dev">COPIAR CORREO</button>
+            </div>
+
+            <div class="contact-card">
+              <span class="c-icon">📍</span>
+              <span class="c-title">UBICACIÓN PRINCIPAL</span>
+              <span class="c-val">El Espino, Boyacá, Colombia</span>
+              <span class="c-sub">Lat 6.3572° N // Lon 72.4967° W</span>
+            </div>
+
+            <div class="contact-card">
+              <span class="c-icon">⚡</span>
+              <span class="c-title">CANAL RÁPIDO</span>
+              <span class="c-val">@JulianFrontier</span>
+              <button class="btn-copy-chip" data-copy="@JulianFrontier">COPIAR USUARIO</button>
+            </div>
+
+          </div>
+
+          <div class="toast-notification" id="toast">¡Copiado al portapapeles! ⚡</div>
+
+          <div class="contact-quote">
+            <p>"No olvides: ¡yo siempre vengo con lo último en guarachas!"</p>
+            <span class="quote-author">— Julián Pérez, Senior Frontier Developer</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cyber-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-logo">JULIÁN PÉREZ // 2026</span>
+        <span class="footer-sub">Forjado en El Espino, Boyacá. Diseñado con tecnología de frontera.</span>
+      </div>
+
+      <div class="footer-center">
+        <div class="footer-pill">
+          <span class="pulse-dot"></span> NODE: EL ESPINO ONLINE
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <span class="footer-lema">"LO ÚLTIMO EN GUORACHAS" ⚡</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="guaracha-synth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
